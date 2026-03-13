@@ -1,12 +1,4 @@
 <?php
-// Unregister the native Posts post type
-add_action('init', function () {
-    global $wp_post_types;
-    if (isset($wp_post_types['post'])) {
-        unset($wp_post_types['post']);
-    }
-});
-
 // Remove Posts and Comments from admin menu
 add_action('admin_menu', function () {
 
