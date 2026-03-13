@@ -7,6 +7,8 @@ add_action('admin_menu', function () {
     remove_menu_page('edit-comments.php'); // Comments
     remove_submenu_page('themes.php', 'site-editor.php'); // Site Editor
     remove_submenu_page('themes.php', 'customize.php'); // Requires CSS hide as well
+    remove_submenu_page('themes.php', 'site-editor.php?p=/pattern');
+
 
     // Production environment restrictions
     if (defined('WP_ENV') && WP_ENV === 'production') {

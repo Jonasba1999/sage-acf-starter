@@ -99,14 +99,6 @@ add_action('after_setup_theme', function () {
      */
     remove_theme_support('block-templates');
 
-    /**
-     * Register the navigation menus.
-     *
-     * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
-     */
-    register_nav_menus([
-        'primary_navigation' => __('Primary Navigation', 'sage'),
-    ]);
 
     /**
      * Disable the default block patterns.
