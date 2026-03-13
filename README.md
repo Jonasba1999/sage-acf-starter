@@ -1,43 +1,84 @@
-<p align="center">
-  <a href="https://roots.io/sage/"><img alt="Sage" src="https://cdn.roots.io/app/uploads/logo-sage.svg" height="100"></a>
-</p>
+# sage-acf-starter
 
-<p align="center">
-  <a href="https://packagist.org/packages/roots/sage"><img alt="Packagist Installs" src="https://img.shields.io/packagist/dt/roots/sage?label=projects%20created&colorB=2b3072&colorA=525ddc&style=flat-square"></a>
-  <a href="https://github.com/roots/sage/actions/workflows/main.yml"><img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/roots/sage/main.yml?branch=main&logo=github&label=CI&style=flat-square"></a>
-  <a href="https://twitter.com/rootswp"><img alt="Follow Roots" src="https://img.shields.io/badge/follow%20@rootswp-1da1f2?logo=twitter&logoColor=ffffff&message=&style=flat-square"></a>
-  <a href="https://github.com/sponsors/roots"><img src="https://img.shields.io/badge/sponsor%20roots-525ddc?logo=github&style=flat-square&logoColor=ffffff&message=" alt="Sponsor Roots"></a>
-</p>
+A [Sage 11](https://roots.io/sage/) starter theme with an opinionated ACF block development setup using Blade templates and View Composers.
 
-# Sage
+Built on top of Sage — Laravel Blade templating, Vite, Tailwind CSS, and [Acorn](https://github.com/roots/acorn).
+
+## What this adds on top of Sage
+
+### ACF block scaffolding command
+
+Generate a complete block scaffold with a single command:
+
+```bash
+wp acorn make:block BlockName
+```
+
+This creates:
+- `app/Blocks/BlockName/block.json` — block registration with ACF config
+- `app/Blocks/BlockName/preview.jpg` — placeholder preview image
+- `resources/views/blocks/block-name.blade.php` — Blade template
+- `app/View/Composers/BlockBlockName.php` — View Composer
+- `acf-json/group_block_block_name.json` — ACF field group (edit fields in ACF admin)
+
+### ACF blocks rendered with Blade
+
+Blocks use `renderCallback` in `block.json` to route rendering through Acorn's Blade engine. Full support for Blade directives, layouts, and components inside blocks.
+
+### View Composers for blocks
+
+Each block gets its own Composer class in `app/View/Composers/` for fetching and transforming ACF field data before it reaches the template.
+
+### Block anchor support
+
+Generated block templates include anchor support out of the box:
+
+```html
+<section @if (!empty($block['anchor'])) id="{{ $block['anchor'] }}" @endif ...>
+```
+
+### Block preview images
+
+When a block is in preview mode in the editor inserter, it renders a `preview.jpg` instead of the live block output.
+
+### Admin hardening
+
+- Removes Posts and Comments from the admin menu
+- Disables the Customizer and Site Editor (URL access blocked)
+- Removes Customize and Comments from the admin bar
+- Hides ACF field groups in production (`WP_ENV === 'production'`)
+- Disables block directory suggestions in the editor
+- Removes the default "Hello World" post on theme activation
+
+### Frontend cleanup
+
+- Removes `wp-block-library` and `wp-block-library-theme` CSS
+- Removes emoji detection scripts and styles
+
+### Theme constants
+
+`app/defines.php` is loaded before all other theme files. The text domain reads from `style.css` — change it once there and it propagates everywhere:
+
+```php
+define('THEME_TEXTDOMAIN', wp_get_theme()->get('TextDomain'));
+```
+
+## Starting a new project
+
+1. Clone the repo
+2. Update `style.css` — set `Theme Name`, `Text Domain`, and other headers
+3. Run `composer install && npm install`
+4. Start building blocks with `wp acorn make:block BlockName`
+
+---
+
+## Sage
 
 **Advanced hybrid WordPress starter theme with Laravel Blade and Tailwind CSS**
 
-- 🔧 Clean, efficient theme templating with Laravel Blade
-- ⚡️ Modern front-end development workflow powered by Vite
-- 🎨 Out of the box support for Tailwind CSS
-- 🚀 Harness the power of Laravel with [Acorn integration](https://github.com/roots/acorn)
-- 📦 Block editor support built-in
+- Clean, efficient theme templating with Laravel Blade
+- Modern front-end development workflow powered by Vite
+- Out of the box support for Tailwind CSS
+- Harness the power of Laravel with [Acorn integration](https://github.com/roots/acorn)
 
-Sage brings proper PHP templating and modern JavaScript tooling to WordPress themes. Write organized, component-based code using Laravel Blade, enjoy instant builds and CSS hot-reloading with Vite, and leverage Laravel's robust feature set through Acorn.
-
-[Read the docs to get started](https://roots.io/sage/docs/installation/)
-
-## Support us
-
-We're dedicated to pushing modern WordPress development forward through our open source projects, and we need your support to keep building. You can support our work by purchasing [Radicle](https://roots.io/radicle/), our recommended WordPress stack, or by [sponsoring us on GitHub](https://github.com/sponsors/roots). Every contribution directly helps us create better tools for the WordPress ecosystem.
-
-### Sponsors
-
-<a href="https://carrot.com/"><img src="https://cdn.roots.io/app/uploads/carrot.svg" alt="Carrot" width="120" height="90"></a> <a href="https://wordpress.com/"><img src="https://cdn.roots.io/app/uploads/wordpress.svg" alt="WordPress.com" width="120" height="90"></a> <a href="https://www.itineris.co.uk/"><img src="https://cdn.roots.io/app/uploads/itineris.svg" alt="Itineris" width="120" height="90"></a> <a href="https://kinsta.com/?kaid=OFDHAJIXUDIV"><img src="https://cdn.roots.io/app/uploads/kinsta.svg" alt="Kinsta" width="120" height="90"></a> <a href="https://40q.agency/"><img src="https://cdn.roots.io/app/uploads/40q.svg" alt="40Q" width="120" height="90"></a>
-
-## Community
-
-Keep track of development and community news.
-
-- Join us on Discord by [sponsoring us on GitHub](https://github.com/sponsors/roots)
-- Join us on [Roots Discourse](https://discourse.roots.io/)
-- Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-- Follow the [Roots Blog](https://roots.io/blog/)
-- Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
-# sage-acf-starter
+[Read the Sage docs](https://roots.io/sage/docs/installation/)
