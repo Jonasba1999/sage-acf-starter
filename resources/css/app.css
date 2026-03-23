@@ -1,4 +1,42 @@
 @import "tailwindcss" theme(static);
-@source "../../app/**/*.php";
-@source "../**/*.blade.php";
-@source "../**/*.js";
+@source "../views/";
+@source "../../app/";
+
+/* Base styles*/
+@import "./custom/base.css";
+
+/* Utilities */
+@import "./custom/utilities.css";
+
+/* Components */
+
+/* CSS animations */
+@import "./custom/animations.css";
+
+/* Fonts */
+@import "./custom/fonts.css";
+
+@theme {
+	/* Remove defaults */
+	--color-*: initial;
+	--text-*: initial;
+
+	/* Fonts */
+	--font-open-sans: "Open Sans", sans-serif;
+
+	/* Colors */
+	--color-black: #000000;
+	--color-white: #ffffff;
+
+	/* Animaton */
+	--ease-sharp: cubic-bezier(1, 0, 1, 1);
+	--ease-smooth: cubic-bezier(0.5, 0, 0, 1);
+	--ease-slow-down: cubic-bezier(0, 0, 0, 1);
+
+	/* Typography */
+
+	/* text-body */
+	--text-body: 1rem;
+	--text-body--line-height: 1.3;
+	--text-body--font-weight: 400;
+}

@@ -1,0 +1,13 @@
+/**
+ * Custom `@font-face` rules
+ *
+ * These will be added immediately before Tailwind’s `base` layer.
+ */
+
+@font-face {
+	font-display: swap;
+	font-family: "Open Sans";
+	font-style: normal;
+	font-weight: 100 900;
+	src: url("@fonts/OpenSans-VariableFont.ttf") format("truetype");
+}

@@ -6,7 +6,7 @@
 }
 
 .wp-block-post-title {
-	@apply p-5 m-4 text-heading-600 border border-[#CCC] transition-all rounded-md;
+	@apply p-5 m-4 border border-[#CCC] transition-all rounded-md text-[1.5rem] font-medium;
 
 	&:hover {
 		@apply border-[#007CBA];
@@ -18,9 +18,9 @@
 }
 
 .block-editor-button-block-appender {
-	@apply !h-10 bg-[#007CBA] rounded-sm text-white border-none shadow-none;
+	@apply h-10! bg-[#007CBA] rounded-sm text-white border-none shadow-none;
 
 	&:hover {
-		@apply bg-[#016BA1] !text-white;
+		@apply bg-[#016BA1] text-white!;
 	}
 }

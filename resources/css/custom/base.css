@@ -1,0 +1,23 @@
+/**
+ * Custom styles to immediately follow Tailwind’s `base` layer
+ */
+
+@layer base {
+	body {
+		@apply font-open-sans text-body;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	button {
+		@apply cursor-pointer;
+	}
+
+	[x-cloak] {
+		@apply hidden!;
+	}
+
+	.grecaptcha-badge {
+		@apply opacity-0! invisible!;
+	}
+}
