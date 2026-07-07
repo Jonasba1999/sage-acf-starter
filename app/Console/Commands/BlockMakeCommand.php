@@ -113,7 +113,7 @@ class Block{$pascal} extends Composer
 
     public function with()
     {
-        \$block = ACF::post('{$snake}_group');
+        \$block = get_field('{$snake}_group');
 
         return [
            // 'field' => Arr::get(\$block, 'field'),
